@@ -5,77 +5,199 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Sairaj | Software Engineer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
-  <header class="nav">
-    <a href="#home" class="logo">Sairaj</a>
-    <nav>
+  <header class="top-nav surface">
+    <div class="brand">
+      <span class="logo-dot blue"></span>
+      <span class="logo-dot red"></span>
+      <span class="logo-dot yellow"></span>
+      <span class="logo-dot green"></span>
+      <span class="brand-name">Sairaj</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#home">Home</a>
       <a href="#about">About</a>
-      <a href="#skills">Skills</a>
-      <a href="#projects">Projects</a>
+      <a href="#work">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
+    <div class="nav-actions">
+      <a class="chip" href="#work">Recent work</a>
+      <a class="chip outline" href="#contact">Book a call</a>
+    </div>
   </header>
 
-  <section id="home" class="hero">
-    <img src="saipic.jpg" alt="Profile" class="avatar" />
-    <h1>Hi, I'm Sairaj</h1>
-    <h2><span id="typed"></span></h2>
-    <a href="#projects" class="btn">View My Work</a>
-  </section>
+  <main>
+    <section id="home" class="hero">
+      <div class="hero-grid surface">
+        <div class="hero-text">
+          <p class="eyebrow">Software Engineer · Product-minded</p>
+          <h1>Building simple, human experiences inspired by Google design.</h1>
+          <p class="lede">
+            I combine systems thinking and clean interfaces to craft responsive web experiences that feel familiar, fast, and clear.
+          </p>
 
-  <section id="about" class="about reveal">
-    <h2>About Me</h2>
-    <p>
-      I'm a passionate software engineer who enjoys building web applications and learning new technologies. I love turning complex problems into simple, beautiful and intuitive designs.
-    </p>
-  </section>
+          <div class="search-pill">
+            <div class="pill-dots">
+              <span class="dot blue"></span>
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <div class="pill-text">
+              <span class="pill-label">Ask me about</span>
+              <span class="typed-wrap"><span id="typed"></span><span class="cursor"></span></span>
+            </div>
+            <a class="pill-action" href="#work">Explore work</a>
+          </div>
 
-  <section id="skills" class="skills reveal">
-    <h2>Skills</h2>
-    <div class="skill-grid">
-      <div class="skill-card">HTML</div>
-      <div class="skill-card">CSS</div>
-      <div class="skill-card">JavaScript</div>
-      <div class="skill-card">Python</div>
-      <div class="skill-card">Django</div>
-      <div class="skill-card">Git</div>
-    </div>
-  </section>
+          <div class="chips">
+            <span class="chip">Front-end systems</span>
+            <span class="chip">Design systems</span>
+            <span class="chip">API-led products</span>
+            <span class="chip">Accessibility</span>
+          </div>
+        </div>
 
-  <section id="projects" class="projects reveal">
-    <h2>Projects</h2>
-    <div class="project-grid">
-      <a href="#" class="project-card">
-        <h3>Short Text Emotion Detection</h3>
-        <p>Detects user emotion based on text messages using machine learning.</p>
-      </a>
-      <a href="#" class="project-card">
-        <h3>Random Joke API</h3>
-        <p>An API that returns a random joke for every request.</p>
-      </a>
-      <a href="#" class="project-card">
-        <h3>Image Color Detection</h3>
-        <p>Tool to identify colors present in an image.</p>
-      </a>
-    </div>
-  </section>
+        <div class="hero-card surface">
+          <div class="profile">
+            <img src="saipic.jpg" alt="Sairaj profile" />
+            <div>
+              <p class="eyebrow">Sairaj Atukuri</p>
+              <p class="status"><span class="status-dot"></span>Open to collaborations</p>
+            </div>
+          </div>
+          <ul class="highlight-list">
+            <li>
+              <span class="label">Focus</span>
+              <strong>Full-stack web · UX craft</strong>
+            </li>
+            <li>
+              <span class="label">Current location</span>
+              <strong>Hyderabad, IN</strong>
+            </li>
+            <li>
+              <span class="label">Toolbox</span>
+              <strong>React, Node, Django, PostgreSQL</strong>
+            </li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn ghost" href="#about">About</a>
+            <a class="btn primary" href="#contact">Say hello</a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <section id="contact" class="contact reveal">
-    <h2>Contact</h2>
-    <p>Feel free to reach out to me on these platforms:</p>
-    <div class="socials">
-      <a href="mailto:sairaj@example.com">Email</a>
-      <a href="https://github.com/sairaj225" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/sairaju-atukuri-419677196/" target="_blank">LinkedIn</a>
-    </div>
-  </section>
+    <section id="about" class="section surface reveal">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Profile</p>
+          <h2>Intentional, curious, and always shipping.</h2>
+        </div>
+        <p class="section-note">Inspired by Google's clean language—white space, clear hierarchy, and precise color accents.</p>
+      </div>
+      <div class="about-grid">
+        <p>
+          I love translating ideas into products people can trust. My work balances accessibility, performance, and polish, blending the rigor of engineering with the empathy of design. I prototype quickly, iterate with feedback, and sweat the details that make interfaces feel effortless.
+        </p>
+        <div class="keypoints">
+          <div class="point">
+            <span class="dot blue"></span>
+            <div>
+              <h3>Systems-first</h3>
+              <p>Design systems, reusable components, and thoughtful documentation that keep teams aligned.</p>
+            </div>
+          </div>
+          <div class="point">
+            <span class="dot red"></span>
+            <div>
+              <h3>Reliable delivery</h3>
+              <p>Pragmatic execution with a bias for shipping—tests, observability, and clean code.</p>
+            </div>
+          </div>
+          <div class="point">
+            <span class="dot green"></span>
+            <div>
+              <h3>Human focus</h3>
+              <p>Inclusive experiences with sensible defaults, crisp typography, and accessible interactions.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <footer>
-    © 2024 Sairaj Atukuri
+    <section id="work" class="section surface reveal">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Selected work</p>
+          <h2>Projects that balance clarity and capability.</h2>
+        </div>
+        <a class="chip outline" href="mailto:sairaj@example.com">Request a walkthrough</a>
+      </div>
+      <div class="project-grid">
+        <a class="project-card" href="#">
+          <div class="project-meta">
+            <span class="dot blue"></span>
+            <span class="pill">Machine Learning</span>
+          </div>
+          <h3>Short Text Emotion Detection</h3>
+          <p>Classifies user sentiment in milliseconds with a lean NLP pipeline, visualized through a Material-inspired console.</p>
+          <span class="link">Read more</span>
+        </a>
+        <a class="project-card" href="#">
+          <div class="project-meta">
+            <span class="dot red"></span>
+            <span class="pill">API</span>
+          </div>
+          <h3>Random Joke API</h3>
+          <p>A playful REST API with rate limiting, caching, and monitoring—packaged with crisp docs and quickstarts.</p>
+          <span class="link">Read more</span>
+        </a>
+        <a class="project-card" href="#">
+          <div class="project-meta">
+            <span class="dot green"></span>
+            <span class="pill">Computer Vision</span>
+          </div>
+          <h3>Image Color Detection</h3>
+          <p>Palette extraction that mirrors Google Photos: instant previews, keyboard shortcuts, and shareable results.</p>
+          <span class="link">Read more</span>
+        </a>
+      </div>
+    </section>
+
+    <section id="contact" class="section surface reveal">
+      <div class="section-header">
+        <div>
+          <p class="eyebrow">Contact</p>
+          <h2>Let’s build something clean and impactful.</h2>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <p class="lede">
+            Whether it's refining a product, designing a new workflow, or improving performance, I bring calm, Google-inspired clarity to the work.
+          </p>
+          <div class="chips">
+            <span class="chip">Open to freelance</span>
+            <span class="chip">Product engineering</span>
+            <span class="chip">UI refinement</span>
+          </div>
+        </div>
+        <div class="contact-actions">
+          <a class="btn primary" href="mailto:sairaj@example.com">Email</a>
+          <a class="btn ghost" href="https://github.com/sairaj225" target="_blank">GitHub</a>
+          <a class="btn ghost" href="https://www.linkedin.com/in/sairaju-atukuri-419677196/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer surface">
+    <p>© 2024 Sairaj Atukuri · Crafted with a Google-inspired palette</p>
   </footer>
 </body>
 </html>
