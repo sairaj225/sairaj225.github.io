@@ -1,8 +1,8 @@
 const typedText = document.getElementById('typed');
 const roles = [
-  'Professional Software Engineer',
-  'Full Stack Developer',
-  'Tech Enthusiast'
+  'design systems that feel like Google',
+  'accessible, joyful interfaces',
+  'fast APIs with clean docs'
 ];
 let roleIndex = 0;
 let charIndex = 0;
@@ -15,18 +15,18 @@ function updateText() {
     charIndex++;
     if (charIndex === current.length) {
       typing = false;
-      setTimeout(updateText, 2000);
+      setTimeout(updateText, 1800);
       return;
     }
   } else {
-    typedText.textContent = current.substring(0, charIndex - 1);
+    typedText.textContent = current.substring(0, Math.max(0, charIndex - 1));
     charIndex--;
     if (charIndex === 0) {
       typing = true;
       roleIndex = (roleIndex + 1) % roles.length;
     }
   }
-  setTimeout(updateText, typing ? 120 : 60);
+  setTimeout(updateText, typing ? 90 : 40);
 }
 
 function revealOnScroll() {
