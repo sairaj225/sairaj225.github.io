@@ -7,6 +7,8 @@ const roles = [
 let roleIndex = 0;
 let charIndex = 0;
 let typing = true;
+const THEME_KEY = 'preferred-theme';
+const root = document.documentElement;
 
 function updateText() {
   const current = roles[roleIndex];
@@ -67,10 +69,58 @@ function setupNavToggle() {
   });
 }
 
+function applyTheme(theme, persist = true) {
+  root.setAttribute('data-theme', theme);
+  if (persist) {
+    localStorage.setItem(THEME_KEY, theme);
+  }
+
+  const toggle = document.querySelector('[data-theme-toggle]');
+  if (toggle) {
+    const icon = toggle.querySelector('.theme-icon');
+    const label = toggle.querySelector('.theme-label');
+    const isDark = theme === 'dark';
+    toggle.setAttribute('aria-label', `Switch to ${isDark ? 'light' : 'dark'} mode`);
+    toggle.setAttribute('aria-pressed', String(isDark));
+    if (icon) icon.textContent = isDark ? '☀️' : '🌙';
+    if (label) label.textContent = isDark ? 'Light' : 'Dark';
+  }
+}
+
+function getInitialTheme() {
+  const stored = localStorage.getItem(THEME_KEY);
+  if (stored === 'light' || stored === 'dark') {
+    return stored;
+  }
+  return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+}
+
+function setupThemeToggle() {
+  const toggle = document.querySelector('[data-theme-toggle]');
+  if (!toggle) return;
+
+  applyTheme(getInitialTheme(), false);
+
+  toggle.addEventListener('click', () => {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    applyTheme(next);
+  });
+
+  if (window.matchMedia) {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    mq.addEventListener('change', (event) => {
+      if (!localStorage.getItem(THEME_KEY)) {
+        applyTheme(event.matches ? 'dark' : 'light', false);
+      }
+    });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   if (roles.length) {
     updateText();
   }
   revealOnScroll();
   setupNavToggle();
+  setupThemeToggle();
 });

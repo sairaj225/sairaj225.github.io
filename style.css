@@ -1,15 +1,31 @@
 :root {
+  color-scheme: light;
   --bg: #f8f9fa;
   --surface: #ffffff;
   --text: #202124;
   --muted: #5f6368;
   --shadow: 0 12px 28px 0 rgba(60, 64, 67, 0.15), 0 2px 4px 0 rgba(60, 64, 67, 0.3);
+  --border: #dadce0;
+  --accent-surface: #e8f0fe;
+  --input-surface: #f1f3f4;
   --radius: 16px;
   --blue: #4285f4;
   --red: #ea4335;
   --yellow: #fbbc05;
   --green: #34a853;
   --max-width: 1200px;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f1115;
+  --surface: #161920;
+  --text: #e5e7eb;
+  --muted: #9ba3b4;
+  --shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 4px 12px rgba(0, 0, 0, 0.35);
+  --border: #2c3240;
+  --accent-surface: rgba(66, 133, 244, 0.12);
+  --input-surface: #1d222c;
 }
 
 * {
@@ -25,6 +41,7 @@ body {
   line-height: 1.6;
   scroll-behavior: smooth;
   min-height: 100vh;
+  transition: background 0.25s ease, color 0.25s ease;
 }
 
 a {
@@ -35,6 +52,7 @@ a {
 .surface {
   background: var(--surface);
   box-shadow: var(--shadow);
+  transition: background 0.25s ease, box-shadow 0.25s ease, border-color 0.2s ease;
 }
 
 .page {
@@ -59,6 +77,8 @@ a {
   margin: 0 auto;
   width: min(calc(100% - 1.25rem), calc(var(--max-width) + 2.5rem));
   backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+  transition: border-color 0.2s ease;
 }
 
 .brand {
@@ -100,7 +120,7 @@ a {
 }
 
 .nav-links a:hover {
-  background: #e8f0fe;
+  background: var(--accent-surface);
   color: var(--blue);
 }
 
@@ -118,7 +138,7 @@ a {
 .menu-toggle {
   display: none;
   padding: 0.35rem;
-  border: 1px solid #dadce0;
+  border: 1px solid var(--border);
   background: var(--surface);
   border-radius: 10px;
   cursor: pointer;
@@ -141,17 +161,31 @@ a {
   align-items: center;
   gap: 0.4rem;
   padding: 0.55rem 0.9rem;
-  background: #e8f0fe;
+  background: var(--accent-surface);
   color: var(--blue);
   border-radius: 999px;
   font-weight: 500;
   border: 1px solid transparent;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
 }
 
 .chip.outline {
   background: transparent;
-  border-color: #dadce0;
+  border-color: var(--border);
   color: var(--muted);
+}
+
+.chip:active {
+  transform: translateY(1px);
+}
+
+.theme-toggle {
+  cursor: pointer;
+}
+
+.theme-icon {
+  font-size: 1rem;
+  line-height: 1;
 }
 
 .hero {
@@ -192,8 +226,9 @@ a {
   gap: 1rem;
   padding: 0.85rem 1rem;
   border-radius: 999px;
-  border: 1px solid #dadce0;
-  background: #f1f3f4;
+  border: 1px solid var(--border);
+  background: var(--input-surface);
+  transition: background 0.25s ease, border-color 0.25s ease;
 }
 
 .pill-dots {
@@ -308,6 +343,7 @@ a {
   justify-content: center;
   align-items: center;
   gap: 0.4rem;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .btn.primary {
@@ -316,7 +352,7 @@ a {
 }
 
 .btn.ghost {
-  border-color: #dadce0;
+  border-color: var(--border);
   color: var(--text);
   background: transparent;
 }
@@ -383,7 +419,7 @@ main {
 .project-card {
   padding: 1.25rem;
   border-radius: 14px;
-  border: 1px solid #dadce0;
+  border: 1px solid var(--border);
   color: var(--text);
   display: flex;
   flex-direction: column;
@@ -405,7 +441,7 @@ main {
 .pill {
   padding: 0.35rem 0.65rem;
   border-radius: 999px;
-  background: #e8f0fe;
+  background: var(--accent-surface);
   color: var(--blue);
   font-weight: 600;
   font-size: 0.85rem;
