@@ -41,9 +41,36 @@ function revealOnScroll() {
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 }
 
+function setupNavToggle() {
+  const toggle = document.querySelector('.menu-toggle');
+  const topNav = document.querySelector('.top-nav');
+  const navLinks = document.querySelectorAll('.nav-links a');
+
+  if (!toggle || !topNav) return;
+
+  const closeMenu = () => {
+    topNav.classList.remove('is-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+
+  toggle.addEventListener('click', () => {
+    const open = topNav.classList.toggle('is-open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+
+  navLinks.forEach(link => link.addEventListener('click', closeMenu));
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 860) {
+      closeMenu();
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   if (roles.length) {
     updateText();
   }
   revealOnScroll();
+  setupNavToggle();
 });
