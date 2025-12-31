@@ -116,6 +116,83 @@ function setupThemeToggle() {
   }
 }
 
+// Data for LinkedIn Articles (Manual List)
+const linkedInPosts = [
+  {
+    title: "Scaling Go Applications on Kubernetes",
+    date: "Dec 2023",
+    url: "https://www.linkedin.com/in/sairaju-atukuri-419677196/", // Replace with actual post URL if available
+    snippet: "Best practices for resource management and autoscaling in production environments."
+  },
+  {
+    title: "The Case for Design Systems in Engineering Teams",
+    date: "Oct 2023",
+    url: "https://www.linkedin.com/in/sairaju-atukuri-419677196/",
+    snippet: "Why investing in a shared component library pays off in velocity and consistency."
+  }
+];
+
+function renderLinkedInArticles() {
+  const container = document.getElementById('linkedin-articles');
+  if (!container) return;
+
+  const html = linkedInPosts.map(post => `
+    <a href="${post.url}" target="_blank" class="article-card">
+      <div class="article-meta">
+        <span>${post.date}</span>
+        <span>•</span>
+        <span>LinkedIn</span>
+      </div>
+      <h4 class="article-title">${post.title}</h4>
+      <p class="article-snippet">${post.snippet}</p>
+    </a>
+  `).join('');
+
+  container.innerHTML = html;
+}
+
+async function fetchMediumArticles() {
+  const container = document.getElementById('medium-articles');
+  if (!container) return;
+
+  const username = 'sairaju.atukuri123'; // Defaulted based on github handle
+  const rssUrl = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/@${username}`;
+
+  try {
+    const response = await fetch(rssUrl);
+    const data = await response.json();
+
+    if (data.status === 'ok' && data.items.length > 0) {
+      const html = data.items.slice(0, 3).map(item => {
+        // Strip HTML tags from description for snippet
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = item.description;
+        const text = tempDiv.textContent || tempDiv.innerText || '';
+        const snippet = text.substring(0, 120) + '...';
+        const date = new Date(item.pubDate).toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+
+        return `
+          <a href="${item.link}" target="_blank" class="article-card">
+            <div class="article-meta">
+              <span>${date}</span>
+              <span>•</span>
+              <span>Medium</span>
+            </div>
+            <h4 class="article-title">${item.title}</h4>
+            <p class="article-snippet">${snippet}</p>
+          </a>
+        `;
+      }).join('');
+      container.innerHTML = html;
+    } else {
+      container.innerHTML = '<p class="article-snippet">No articles found. Check back later.</p>';
+    }
+  } catch (error) {
+    console.error('Error fetching Medium articles:', error);
+    container.innerHTML = '<p class="article-snippet">Unable to load articles.</p>';
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   if (roles.length) {
     updateText();
@@ -123,4 +200,8 @@ document.addEventListener('DOMContentLoaded', () => {
   revealOnScroll();
   setupNavToggle();
   setupThemeToggle();
+
+  // Load Writing Section
+  renderLinkedInArticles();
+  fetchMediumArticles();
 });
