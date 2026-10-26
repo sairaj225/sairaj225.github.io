@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Veera Atukuri | Résumé</title>
+  <meta name="description" content="Résumé of Veera Atukuri, Software Development Engineer based in Hyderabad, India." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="resume.css" />
+  <script>
+    // Applied before first paint so a dark-mode visitor never sees a white flash.
+    try {
+      var stored = localStorage.getItem('preferred-theme');
+      var dark = stored ? stored === 'dark'
+        : window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+    } catch (e) { /* private mode — fall back to the light default */ }
+  </script>
+  <script defer src="../script.js"></script>
+</head>
+
+<body>
+  <header class="top-nav surface">
+    <div class="brand">
+      <span class="logo-dot blue"></span>
+      <span class="logo-dot red"></span>
+      <span class="logo-dot yellow"></span>
+      <span class="logo-dot green"></span>
+      <span class="brand-name">Veera</span>
+    </div>
+    <!-- Required: below 820px the links and actions are hidden until this opens them. -->
+    <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+      <span class="menu-bar"></span>
+    </button>
+    <nav class="nav-links">
+      <a href="../index.html">Home</a>
+      <a href="../index.html#work">Projects</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="chip outline theme-toggle" type="button" aria-label="Toggle dark mode" data-theme-toggle>
+        <span class="theme-icon" aria-hidden="true">🌙</span>
+        <span class="theme-label">Dark</span>
+      </button>
+      <a class="chip outline" href="resume.md" download>Download .md</a>
+    </div>
+  </header>
+
+  <main class="page resume-page">
+    <nav class="resume-toc surface" aria-label="Sections">
+      <a href="#skills">Skills</a>
+          <a href="#experience">Experience</a>
+          <a href="#certifications">Certifications</a>
+    </nav>
+
+    <article class="resume surface">
+      <h1 id="veera-atukuri">Veera Atukuri</h1>
+      <p><strong>Software Engineer</strong> at IBM · Hyderabad, India</p>
+      <p><a href="mailto:veera.atukuri@gmail.com">veera.atukuri@gmail.com</a> · <a href="https://github.com/sairaj225" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://www.linkedin.com/in/sairaju-atukuri-419677196/" target="_blank" rel="noopener noreferrer">LinkedIn</a> · <a href="https://medium.com/@sairaju.atukuri123" target="_blank" rel="noopener noreferrer">Medium</a></p>
+      <hr />
+      <h2 id="skills">Skills</h2>
+      <ul>
+      <li><strong>Languages</strong> — Go, Python</li>
+      <li><strong>Infrastructure</strong> — Kubernetes, cloud</li>
+      <li><strong>Systems</strong> — Distributed systems</li>
+      </ul>
+      <hr />
+      <h2 id="experience">Experience</h2>
+      <h3 id="software-engineer-ibm">Software Engineer — IBM</h3>
+      <ul>
+      <li>Elasticsearch database migrations.</li>
+      </ul>
+      <hr />
+      <h2 id="certifications">Certifications</h2>
+      <ul>
+      <li>Certified Kubernetes Administrator (CKA)</li>
+      <li>AWS Certified Solutions Architect – Professional</li>
+      </ul>
+    </article>
+  </main>
+
+  <footer class="footer surface">
+    <p>Written in Markdown · <a href="resume.md">View the source</a></p>
+  </footer>
+</body>
+
+</html>
