@@ -194,9 +194,7 @@ async function fetchMediumArticles() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Guarded because this script is shared with pages that have no hero, such as
-  // the résumé at /markdown.
-  if (roles.length && typedText) {
+  if (roles.length) {
     updateText();
   }
   revealOnScroll();
